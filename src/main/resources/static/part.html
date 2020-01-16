@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PrintPart</title>
+    <!--<link rel="stylesheet" href="css/print.css" type="text/css" media="print" />-->
+    <link rel="stylesheet" href="css/part.css" type="text/css">
+
+</head>
+<body>
+<div id="dy">
+    <h4>hello world!</h4>
+    <input type="button" value="打印" onclick="print1()" class="no-print">
+<div>
+    <ul class="piclass">
+        <li>
+            <img src="images/bear.jpg">
+        </li>
+        <li>
+            <img src="images/scrawl.png">
+        </li>
+    </ul>
+</div>
+</div>
+</body>
+<script src="js/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="js/jQuery.print.min.js"></script>
+<script src="js/jquery.print-preview.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+
+    function print1() {
+        // $("#myElementId").print(/*options*/);
+        $.print("#dy" , {
+            globalStyles : true,
+            //Add link with attrbute media=print
+            mediaPrint : false,
+            //Custom stylesheet
+            stylesheet : null,
+            //Print in a hidden iframe
+            iframe : false,
+            //Don't print this
+            noPrintSelector : ".no-print",
+            //Add this at top
+            prepend : "前置内容<br/>",
+            //Add this on bottom
+            append : "<span><br/>后置内容</span>",
+            //Log to console when printing is done via a deffered callback
+            deferred: $.Deferred().done(function() { console.log('Printing done', arguments);})
+            }
+        )
+    }
+
+
+</script>
+
+</html>
